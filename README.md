@@ -45,7 +45,8 @@ To run this project, you only need a web browser.
 - `style.css`: The CSS file for styling the calculator.
 - `script.js`: The JavaScript file containing the logic for calculator operations.
 
-#images
+## images
+
 ![image](https://github.com/user-attachments/assets/733b1098-9b58-4468-a15e-b7909e94a307)
 
 
