@@ -20,4 +20,4 @@ To run this project, you only need a web browser.
 1. Clone the repository or download the ZIP file:
 
    ```bash
-   git clone 
+   git clone https://github.com/TanmoySantra28/js-calculator.git
