@@ -26,7 +26,7 @@ To run this project, you only need a web browser.
 2. Navigate to the project directory:
 
    ```bash
-   cd simple-calculator
+   cd js-calculator
    ```
 
 3. Open the `index.html` file in your web browser.
