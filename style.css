@@ -1,57 +1,65 @@
+/* Reset default margins and paddings, set default font, and enable consistent box-sizing */
 * {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
+/* Style the main container to center the calculator vertically and horizontally */
 .container {
-    width: 100%;
+    width: 100%; /* Full width and height of the viewport */
     height: 100vh;
     background: linear-gradient(to bottom right, #a1c4fd, #c2e9fb);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
 }
 
+/* Style the calculator box */
 .calculator {
-    background: #3a4452;
-    padding: 20px;
-    border-radius: 10px;
+    background: #3a4452; /* Dark background color */
+    padding: 20px; /* Padding around the calculator content */
+    border-radius: 10px; /* Rounded corners for the calculator */
 }
 
+/* General styles for all input buttons inside the calculator */
 .calculator form input {
-    border: 0;
-    outline: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
-    background: transparent;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
-    margin: 10px;
+    border: 0; /* Remove default border */
+    outline: 0; /* Remove focus outline */
+    width: 60px; /* Fixed width for buttons */
+    height: 60px; /* Fixed height for buttons */
+    border-radius: 10px; /* Rounded corners for buttons */
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2); /* Soft light and dark shadow */
+    background: transparent; /* Transparent button background */
+    font-size: 20px; /* Font size for button text */
+    color: white; /* White text color */
+    cursor: pointer; /* Pointer cursor for buttons */
+    margin: 10px; /* Spacing around each button */
 }
 
+/* Style the display container */
 form .display {
-    display: flex;
-    justify-content: flex-end;
-    margin: 20px 0;
+    display: flex; /* Use flexbox to arrange the display */
+    justify-content: flex-end; /* Align the text to the right */
+    margin: 20px 0; /* Add spacing above and below the display */
 }
 
+/* Style the input field inside the display */
 form .display input {
-    text-align: right;
-    flex: 1;
-    font-size: 45px;
-    box-shadow: none;
+    text-align: right; /* Align text to the right */
+    flex: 1; /* Allow the display to expand and fill available space */
+    font-size: 45px; /* Larger font size for clear visibility */
+    box-shadow: none; /* Remove button-like shadow */
 }
 
+/* Style for the "equal" (=) button */
 form input.equal {
-    width: 145px;
-    color: rgb(239, 119, 6);
+    width: 145px; /* Make the "=" button wider */
+    color: rgb(239, 119, 6); /* Distinct orange text color */
 }
 
+/* Style for operator buttons (+, -, *, /) */
 form input.operator {
-    color: #c2e9fb;
+    color: #c2e9fb; /* Light blue text color */
 }

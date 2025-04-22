@@ -1,27 +1,30 @@
+// Initialize an empty string to store the current expression
 let expression = '';
 
-//update the display with a max length of 13 characters
-function updateDisplay() 
-{
+// Function to update the calculator display
+function updateDisplay() {
+    // Get the display input element
     const display = document.getElementById('display');
+    // Update the display value, limiting the length to 13 characters
     display.value = expression.slice(0, 13);
 }
 
-//append value to the expression
-function appendValue(val) 
-{
+// Function to append a value to the current expression
+function appendValue(val) {
+    // Define the allowed operators
     const operators = ['+', '-', '*', '/'];
-    //prevent consecutive operators
-    if (operators.includes(val) && operators.includes(expression.slice(-1))) 
-    {
+
+    // Prevent consecutive operators (e.g., "+*")
+    if (operators.includes(val) && operators.includes(expression.slice(-1))) {
         return;
     }
-    //prevent multiple dots in the same number
-    if (val === '.' && expression.slice(-1) === '.') 
-    {
+
+    // Prevent multiple consecutive dots (e.g., "...")
+    if (val === '.' && expression.slice(-1) === '.') {
         return;
     }
-    //prevent adding a dot if there's already one in the current number
+
+    // Prevent adding multiple dots within the same number
     let lastOperatorIndex = Math.max(
         expression.lastIndexOf('+'),
         expression.lastIndexOf('-'),
@@ -29,52 +32,64 @@ function appendValue(val)
         expression.lastIndexOf('/')
     );
     let lastNumber = expression.slice(lastOperatorIndex + 1);
-    if (val === '.' && lastNumber.includes('.')) 
-    {
+    if (val === '.' && lastNumber.includes('.')) {
         return;
     }
-    if (expression.length < 12) 
-    {
+
+    // Append the value if the expression is within the max length
+    if (expression.length < 12) {
         expression += val;
         updateDisplay();
     }
 }
 
-//clear the display
-function clearDisplay() 
-{
+// Function to clear the display and reset the expression
+function clearDisplay() {
+    // Reset the expression to an empty string
     expression = '';
+    // Update the display
     updateDisplay();
 }
 
-//delete the last character
+// Function to delete the last character from the expression
 function deleteLast() {
+    // Remove the last character from the expression string
     expression = expression.slice(0, -1);
+    // Update the display
     updateDisplay();
 }
 
-//calculation logic
-function calculate() 
-{
+// Function to evaluate the expression and display the result
+function calculate() {
     try {
-        expression = (new Function('return ' + expression))().toString();  // Safer than eval()
+        // Use the Function constructor to evaluate the expression safely
+        expression = (new Function('return ' + expression))().toString();
+        // Update the display with the result
         updateDisplay();
     } catch (e) {
+        // Display "Error" if the expression is invalid
         expression = 'Error';
         updateDisplay();
     }
 }
 
-//keyboard input
-document.addEventListener('keydown', function(event) 
-{
+// Add an event listener for keyboard inputs
+document.addEventListener('keydown', function(event) {
+    // Define the allowed keys for input
     const allowedKeys = '0123456789+-*/.=BackspaceEnter';
+
+    // Check if the pressed key is allowed
     if (allowedKeys.includes(event.key)) {
+        // Calculate the result if "Enter" or "=" is pressed
         if (event.key === 'Enter' || event.key === '=') {
             calculate();
-        } else if (event.key === 'Backspace') {
+        }
+        // Delete the last character if "Backspace" is pressed
+        else if (event.key === 'Backspace') {
             deleteLast();
-        } else {
+        }
+        // Append the key value to the expression otherwise
+        else {
             appendValue(event.key);
         }
     }
